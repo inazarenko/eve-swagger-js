@@ -51,11 +51,11 @@
     "tag": "dev"
   },
   "dependencies": {
-    "@types/verror": "^1.10.1",
     "@types/superagent": "^3.5.5",
+    "@types/verror": "^1.10.1",
     "bottleneck": "^1.16.0",
     "moment": "^2.18.1",
-    "superagent": "^3.6.0",
+    "superagent": "^6.1.0",
     "verror": "^1.10.0"
   },
   "devDependencies": {
