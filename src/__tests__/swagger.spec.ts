@@ -5,7 +5,6 @@ import {makeAPI} from '../index';
 import * as swagger from '../../util/esi-api';
 
 const swaggerImpl = swagger.API.getLocalAPI();
-const swaggerLatest = swagger.API.getRemoteAPI();
 
 let implementedRoutes :string[] = JSON.parse(
     fs.readFileSync(path.join(__dirname, '../../util/implemented-routes.json'),
@@ -15,10 +14,12 @@ let implementedRoutes :string[] = JSON.parse(
 implementedRoutes.push('get_characters_character_id_search');
 
 test.skip('Swagger version', () => {
+  const swaggerLatest = swagger.API.getRemoteAPI();
   expect(swaggerImpl.version).toEqual(swaggerLatest.version);
 });
 
 test.skip('Swagger routes', () => {
+  const swaggerLatest = swagger.API.getRemoteAPI();
   let missingRoutes = [];
   for (let route of swaggerLatest.routeIDs) {
     if (!implementedRoutes.includes(route)) {
@@ -66,7 +67,7 @@ test('Cache and throttle', () => {
     // approximately 2 seconds after the first request
     return limitedESI.corporations(result.corporation_id).info();
   }).then(result => {
-    expect(result.corporation_name).toEqual('Nobody in Local');
+    expect(result.corporation_name).toEqual('Sebiestor Tribe');
     let elapsedTime = Math.abs(new Date().getTime() - firstRequestTime);
     expect(elapsedTime).toBeGreaterThan(1700);
     expect(elapsedTime).toBeLessThan(2800);
