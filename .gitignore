@@ -5,6 +5,7 @@ npm-debug.log
 # Dev environment
 .DS_Store
 .idea/
+.vscode/
 
 # Project structure
 #dist/
